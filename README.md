@@ -106,13 +106,9 @@ class UploadService
   end
 
   def run
-    log("Starting Upload Service...")
-    loop do
-      upload_latest_file_to_sftp
-      sleep(3600) # Check every hour (adjust as needed)
-    end
+    upload_latest_file_to_sftp
   rescue StandardError => e
-    log("Service crashed: #{e.message}\n#{e.backtrace.join("\n")}")
+    log("Service execution failed: #{e.message}\n#{e.backtrace.join("\n")}")
   end
 
   private
